@@ -11,6 +11,6 @@ public Producto(string nombre, double precio)
         Nombre = nombre;
         Precio = precio;
     }
-public abstract void ObtenerDescripcion();
+public abstract string ObtenerDescripcion();
 
 }
