@@ -15,6 +15,6 @@ public class Entrante : Producto {
     {
             string temperatura = SeSirveFrio ? "Frío" : "Caliente";
             
-            return $"{Nombre} - {Precio} EUR (Para {NumeroPersonas} personas, {temperatura})";
+            return $"{Nombre} - {Precio:C}  (Para {NumeroPersonas} personas, {temperatura})";
     }
 }

@@ -12,6 +12,6 @@ public class Postre : Producto
 
     public override string ObtenerDescripcion()
     {
-        return $"{Nombre} - {Precio} EUR ({Calorias} kcal)";
+        return $"{Nombre} - {Precio:C} ({Calorias} kcal)";
     }
 }

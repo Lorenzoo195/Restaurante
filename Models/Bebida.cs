@@ -11,6 +11,6 @@ public Bebida (string nombre, double precio, bool esAlcoholica): base (nombre, p
     public override string ObtenerDescripcion()
     {
         string tipo = EsAlcoholica ? "Con alcohol" : "Sin alcohol";
-        return $"{Nombre} - {Precio} EUR ({tipo})";
+        return $"{Nombre} - {Precio:C}  ({tipo})";
     }
 }
