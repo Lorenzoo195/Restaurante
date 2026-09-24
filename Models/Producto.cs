@@ -1,4 +1,4 @@
-namespace Restaurante.Models;
+namespace Models;
 
 public abstract class Producto
 {
@@ -11,6 +11,6 @@ public Producto(string nombre, double precio)
         Nombre = nombre;
         Precio = precio;
     }
-public abstract string ObtenerDescripcion();
+public abstract void ObtenerDescripcion();
 
 }
