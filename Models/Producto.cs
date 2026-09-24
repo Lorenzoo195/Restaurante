@@ -1,12 +1,12 @@
-namespace Restaurante.Modles;
+namespace Restaurante.Models;
 
 public abstract class Producto
 {
     public string Nombre {get; set;}
-    public string Precio {get; set;}
+    public double Precio {get; set;}
 
 
-public Producto(string nombre, string precio)
+public Producto(string nombre, double precio)
     {
         Nombre = nombre;
         Precio = precio;
