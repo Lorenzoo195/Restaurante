@@ -71,3 +71,48 @@ if (!encontrado)
 {
     Console.WriteLine("\nNo se ha encontrado el producto.");
 }
+
+
+Console.Write("\nPrecio máximo: ");
+string entradaPrecio = Console.ReadLine();
+
+if (double.TryParse(entradaPrecio, out double precioMaximo))
+{
+    bool hayProductos = false;
+    Console.WriteLine($"\nProductos de hasta {precioMaximo:C}:");
+
+    foreach (Producto p in carta)
+    {
+        if (p.Precio <= precioMaximo)
+        {
+            Console.WriteLine($"{p.Nombre} - {p.Precio:C}");
+            hayProductos = true;
+        }
+    }
+
+    if (!hayProductos)
+    {
+        Console.WriteLine("No existe ningún producto por ese precio o menos.");
+    }
+}
+else
+{
+    Console.WriteLine("\nDebes introducir un precio numérico válido.");
+}
+
+
+
+if (carta.Count > 0)
+{
+    Producto masCaro = carta[0]; 
+
+    foreach (Producto p in carta)
+    {
+        if (p.Precio > masCaro.Precio)
+        {
+            masCaro = p; 
+    }
+
+    Console.WriteLine("\nEl producto más caro es:");
+    Console.WriteLine($"{masCaro.Nombre} - {masCaro.Precio:C}");
+}
