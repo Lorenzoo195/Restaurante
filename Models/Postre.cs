@@ -1,10 +1,11 @@
 namespace Models;
 
-public class Postre : Producto
+using Interfaces;
+public class Postre : Producto, IDescontable
 {
     public int Calorias { get; set; }
 
-    public Postre(string nombre, double precio, int calorias) 
+    public Postre(string nombre, double precio, int calorias)
         : base(nombre, precio)
     {
         Calorias = calorias;
@@ -13,5 +14,11 @@ public class Postre : Producto
     public override string ObtenerDescripcion()
     {
         return $"{Nombre} - {Precio:C} ({Calorias} kcal)";
+    }
+
+    public void AplicarDescuento(double porcentaje)
+    {
+        double cantidadDescontar = Precio * (porcentaje / 100);
+        Precio -= cantidadDescontar;
     }
 }

@@ -28,12 +28,13 @@ public class MenuApp
             Console.WriteLine("4. Producto más caro");
             Console.WriteLine("5. Añadir producto al pedido");
             Console.WriteLine("6. Ver cuenta total");
+            Console.WriteLine("7. Aplicar descuento del 10%");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 6)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 7)
             {
-                Console.WriteLine("Error: selecciona una opción válida (0-4).");
+                Console.WriteLine("Error: selecciona una opción válida (0-7).");
                 continue;
             }
 
@@ -56,6 +57,9 @@ public class MenuApp
                     break;
                 case 6:
                     MostrarTotal();
+                    break;
+                case 7:
+                    pedidoActual.AplicarDescuento(10); 
                     break;
                 case OpcionSalir:
                     Console.WriteLine("¡Hasta pronto!");
