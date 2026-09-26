@@ -3,12 +3,15 @@ using Models;
 public class MenuApp
 {
     private List<Producto> carta;
+    private Pedido pedidoActual;
     private const int OpcionSalir = 0;
 
     public MenuApp(List<Producto> lista)
     {
         carta = lista;
+        pedidoActual = new Pedido();
     }
+
 
     public void Iniciar()
     {
@@ -23,10 +26,12 @@ public class MenuApp
             Console.WriteLine("2. Buscar producto");
             Console.WriteLine("3. Productos por precio");
             Console.WriteLine("4. Producto más caro");
+            Console.WriteLine("5. Añadir producto al pedido");
+            Console.WriteLine("6. Ver cuenta total");
             Console.WriteLine("0. Salir");
             Console.WriteLine("Selecciona una opción:");
 
-            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 4)
+            if (!int.TryParse(Console.ReadLine(), out opcion) || opcion < 0 || opcion > 6)
             {
                 Console.WriteLine("Error: selecciona una opción válida (0-4).");
                 continue;
@@ -45,6 +50,12 @@ public class MenuApp
                     break;
                 case 4:
                     MostrarProductoMasCaro();
+                    break;
+                case 5:
+                    AnadirAlPedido();
+                    break;
+                case 6:
+                    MostrarTotal();
                     break;
                 case OpcionSalir:
                     Console.WriteLine("¡Hasta pronto!");
@@ -119,4 +130,39 @@ public class MenuApp
             Console.WriteLine($"{masCaro.Nombre} - {masCaro.Precio:C}");
         }
     }
+
+    private void AnadirAlPedido()
+    {
+        Console.WriteLine("\n--- AÑADIR AL PEDIDO ---");
+        MostrarCarta();
+
+        Console.Write("\nIntroduce el número del producto: ");
+
+        if (int.TryParse(Console.ReadLine(), out int numeroElegido))
+        {
+            if (numeroElegido >= 1 && numeroElegido <= carta.Count)
+            {
+                Producto deseado = carta[numeroElegido - 1];
+
+                pedidoActual.AgregarProducto(deseado);
+            }
+            else
+            {
+                Console.WriteLine("Número fuera de rango.");
+            }
+        }
+        else
+        {
+            Console.WriteLine("Debes introducir un número.");
+        }
+    }
+
+    private void MostrarTotal()
+    {
+        double total = pedidoActual.CalcularTotal();
+        Console.WriteLine($"\nTOTAL DE LA CUENTA: {total:C}");
+    }
+
+
+
 }
