@@ -28,9 +28,46 @@ Console.WriteLine();
 int contador = 1;
 foreach (Producto p in carta)
 {
-    if (p is Bebida)
+    Console.WriteLine($"{contador}. {p.ObtenerDescripcion()}");
+    contador++;
+}
+
+Console.Write("\n¿Qué producto quieres? ");
+string entrada = Console.ReadLine(); 
+if (int.TryParse(entrada, out int opcion))
+{
+    if (opcion >= 1 && opcion <= carta.Count)
     {
-        Console.WriteLine($"{contador}. {p.ObtenerDescripcion()}");
-        contador++;
+        Producto elegido = carta[opcion - 1]; 
+        Console.WriteLine($"\nHas elegido:\n{elegido.Nombre} - {elegido.Precio:C}");
     }
+    else
+    {
+        Console.WriteLine("\nEse producto no existe.");
+    }
+}
+else
+{
+    Console.WriteLine("\nDebes introducir un número válido.");
+}
+
+Console.Write("\nProducto a buscar: ");
+string textoBusqueda = Console.ReadLine();
+bool encontrado = false; 
+
+foreach (Producto p in carta)
+{
+    
+    if (p.Nombre.ToLower() == textoBusqueda.ToLower())
+    {
+        Console.WriteLine("\nProducto encontrado:");
+        Console.WriteLine($"{p.Nombre} - {p.Precio:C}");
+        encontrado = true; 
+        break; 
+    }
+}
+
+if (!encontrado)
+{
+    Console.WriteLine("\nNo se ha encontrado el producto.");
 }
