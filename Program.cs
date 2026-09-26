@@ -22,9 +22,10 @@ carta.Add(pizza);
 carta.Add(tarta);
 carta.Add(flan);
 
-Console.WriteLine("Carta");
-Console.WriteLine();
+MenuApp app = new MenuApp(carta);
+app.Iniciar();
 
+/*
 int contador = 1;
 foreach (Producto p in carta)
 {
@@ -111,9 +112,10 @@ if (carta.Count > 0)
         if (p.Precio > masCaro.Precio)
         {
             masCaro = p; 
+        }
     }
 
     Console.WriteLine("\nEl producto más caro es:");
     Console.WriteLine($"{masCaro.Nombre} - {masCaro.Precio:C}");
 }
-}
+*/
