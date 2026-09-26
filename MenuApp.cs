@@ -163,8 +163,11 @@ public class MenuApp
 
     private void MostrarTotal()
     {
+        /*
         double total = pedidoActual.CalcularTotal();
         Console.WriteLine($"\nTOTAL DE LA CUENTA: {total:C}");
+        */
+        pedidoActual.MostrarPedido();
     }
 
 

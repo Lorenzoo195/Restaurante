@@ -40,4 +40,22 @@ public class Pedido : IDescontable
         }
         Console.WriteLine($"\nSe ha aplicado un {porcentaje}% de descuento a {productoRebajados} productos compatibles.");
     }
+    public void MostrarPedido()
+    {
+        Console.WriteLine("\n=== TICKET DEL PEDIDO ===");
+    
+    if (productosPedido.Count == 0)
+    {
+        Console.WriteLine("Todavía no has pedido nada.");
+        return;
+    }
+    foreach (Producto p in productosPedido)
+    {
+        Console.WriteLine($"- {p.Nombre} ........ {p.Precio:C}");
+    }
+    
+    Console.WriteLine("-------------------------");
+    Console.WriteLine($"TOTAL A PAGAR: {CalcularTotal():C}");
+    Console.WriteLine("=========================\n");
+    }
 }
