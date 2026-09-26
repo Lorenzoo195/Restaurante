@@ -12,7 +12,6 @@ PlatoPrincipal pizza = new PlatoPrincipal("Pizza Margarita", 11.00, true);
 Postre tarta = new Postre("Tarta de queso", 5.00, 450);
 Postre flan = new Postre("Flan casero", 4.00, 300);
 
-// 2. Almacenamos todo en una colección única
 List<Producto> carta = new List<Producto>();
 carta.Add(bravas);
 carta.Add(ensaladilla);
@@ -23,12 +22,15 @@ carta.Add(pizza);
 carta.Add(tarta);
 carta.Add(flan);
 
-// 3. Recorremos la colección
-Console.WriteLine("=== CARTA ===");
+Console.WriteLine("Carta");
 Console.WriteLine();
 
+int contador = 1;
 foreach (Producto p in carta)
 {
-    // El enunciado nos pide mostrar solo nombre y precio en este ejercicio
-    Console.WriteLine($"{p.Nombre} - {p.Precio} EUR");
+    if (p is Bebida)
+    {
+        Console.WriteLine($"{contador}. {p.ObtenerDescripcion()}");
+        contador++;
+    }
 }
