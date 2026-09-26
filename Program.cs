@@ -1,4 +1,4 @@
-using Models;
+﻿using Models;
 
 Entrante bravas = new Entrante("Patatas bravas", 6.50, 2, false);
 Entrante ensaladilla = new Entrante("Ensaladilla rusa", 5.00, 2, true);
@@ -115,4 +115,5 @@ if (carta.Count > 0)
 
     Console.WriteLine("\nEl producto más caro es:");
     Console.WriteLine($"{masCaro.Nombre} - {masCaro.Precio:C}");
+}
 }
